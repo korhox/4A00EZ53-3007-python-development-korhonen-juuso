@@ -7,5 +7,5 @@ elif arvosana == 1:
     print("Olet saavuttanut tavoitteet osittain.")
 elif arvosana == 2:
     print("Olet saavuttanut tavoitteet hyvin.")
-elif arvosana > 3:
+elif arvosana == 3:
     print("Olet saavuttanut tavoitteet kiitettävästi.")
