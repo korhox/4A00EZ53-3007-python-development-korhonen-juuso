@@ -1,11 +1,11 @@
 luku = 0
 pienin = -1
+
 while luku >= 0:
     print("Anna positiivinen numero (lopetus negatiivisella luvulla)")
     luku = int( input() )
 
-    ## tää ei toimi jostakin syystä oikein, aivot sulaa
-    if pienin > luku or pienin == -1:
+    if pienin > luku and luku >= 0 or pienin == -1:
         pienin = luku
 
 if pienin != -1:
