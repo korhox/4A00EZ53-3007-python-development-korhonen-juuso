@@ -1,16 +1,13 @@
 import random
 
+randList = [
+    random.randint(1, 40),
+    random.randint(1, 40),
+    random.randint(1, 40),
+    random.randint(1, 40),
+    random.randint(1, 40),
+    random.randint(1, 40),
+    random.randint(1, 40)
+]
 
-def lotto():
-    return [
-        random.randint(1, 40),
-        random.randint(1, 40),
-        random.randint(1, 40),
-        random.randint(1, 40),
-        random.randint(1, 40),
-        random.randint(1, 40),
-        random.randint(1, 40)
-    ]
-
-
-print(lotto())
+print(randList)
