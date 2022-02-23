@@ -1,2 +1,5 @@
-from util import *
-print("Main class!")
+from util.user_input import *
+
+results = ask_person()
+
+print(results)

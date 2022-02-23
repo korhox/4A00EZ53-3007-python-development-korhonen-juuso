@@ -1,5 +1,4 @@
 import re
-import tld
 
 
 def is_date(date):
@@ -36,4 +35,3 @@ def is_personal_id(personal_id):
         Whether the personal id is correctly formatted or no
     """
     return re.match(r"^(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])([5-9]\d\+|\d\d-|[01]\dA)\d{3}[\dABCDEFHJKLMNPRSTUVWXY]$", personal_id) and True or False
-
