@@ -45,3 +45,7 @@ class TestValidation(unittest.TestCase):
         self.assertFalse(is_email("sdf@sdf4yhs"))
         self.assertFalse(is_email("sdfsdf4yhs.sdwhdf"))
         self.assertFalse(is_email("sdfsdf4yhs"))
+
+    def test_is_personal_id(self):
+        self.assertTrue(is_personal_id("131052-308T"))
+        self.assertTrue(is_personal_id("120464-121C"))
