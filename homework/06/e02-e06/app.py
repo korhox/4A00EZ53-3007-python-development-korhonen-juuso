@@ -1,5 +1,6 @@
 from flask import Flask
 from datetime import datetime
+import htmlhelper
 
 # create Flask object, give module name
 # where to look for resources, like templates or static files
@@ -22,6 +23,11 @@ def juuso():
 def date():
     date = datetime.now()
     return f"<p>{date}</p>"
+
+
+@app.route("/date5")
+def date5():
+    return htmlhelper.generate_html_page("date", f"<p>{datetime.now()}</p>")
 
 
 # start the app if using python3 app.py
