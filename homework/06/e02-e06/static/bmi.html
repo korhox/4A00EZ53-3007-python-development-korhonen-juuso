@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>BMI Calculator</title>
+        <link rel="stylesheet" href="https://cdn.bittivirta.fi/packages/bootstrap/v5.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.bittivirta.fi/css/fonts/font-package.css">
+        <script src="https://cdn.bittivirta.fi/packages/fontawesome/v6.0.0/js/all.min.js"></script>
+        <script src="https://cdn.bittivirta.fi/packages/jquery/jquery-3.6.0.min.js"></script>
+        <style>
+            body {
+                font-family:'Ubuntu';
+            }
+            code {
+                font-family:'Fira Code Nerd';
+            }
+            .container {
+                max-width: 500px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container my-5">
+            <h1 class="text-center">BMI Calculator</h1>
+            <div class="card">
+                <div class="card-body text-center">
+                    <div id="form">
+                        <div class="input-group input-group-lg flex-nowrap">
+                            <span class="input-group-text"><i class="fa-solid fa-fw fa-weight-hanging"></i></span>
+                            <input type="number" name="mass" id="mass" class="form-control" placeholder="Mass" min="0.1" max="700" >
+                            <span class="input-group-text">kg</span>
+                        </div>
+                        <div class="input-group input-group-lg flex-nowrap mt-3">
+                            <span class="input-group-text"><i class="fa-solid fa-fw fa-ruler-vertical"></i></span>
+                            <input type="number" name="height" id="height" class="form-control" placeholder="Height" max="3.0" min="0.1" step="0.01">
+                            <span class="input-group-text">cm</span>
+                        </div>
+                        <a class="btn btn-lg btn-primary mt-4" onclick="refresh();"><i class="fa-solid fa-paper-plane"></i> Calculate</a>
+                    </div>
+                    <div id="result" style="display:none;">
+                        <span class="fs-2">Calculated BMI:</span>
+                        <br>
+                        <span class="fs-3 text-primary fw-bold" id="resultText">0.00</span>
+                        <br>
+                        <a class="btn btn-sm btn-primary mt-3" onclick="newCalc();"><i class="fa-solid fa-plus"></i> New calculation</a>
+                    </div>
+                    <div id="error" style="display:none;">
+                        <div class="alert alert-danger">An error occurred. Please try again.</div>
+                        <a class="btn btn-sm btn-primary mt-3" onclick="newCalc();"><i class="fa-solid fa-plus"></i> New calculation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const refresh = () => {
+                $("#form").slideUp();
+                mass = $("#mass").val();
+                height = $("#height").val();
+                fetch("/bmi/json?mass="+mass+"&height="+height)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("HTTP ERROR: " + response.status);
+                    }
+                    return response.json();
+                })
+                .then(json => {
+                    $("#resultText").text((json.result).toFixed(2));
+                    $("#result").slideDown();
+                })
+                .catch((e)=>{
+                    console.log("Error: " + e);
+                    $("#error").slideDown();
+                });
+            };
+            const newCalc = () => {
+                $("#error").slideUp();
+                $("#height").val("");
+                $("#mass").val("")
+                $("#form").slideDown();
+                $("#result").slideUp();
+            }
+        </script>
+    </body>
+</html
