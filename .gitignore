@@ -130,3 +130,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Project configs, personal storage etc.
+storage/
+
+# Mac things
+.DS_Store
