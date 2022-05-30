@@ -6,13 +6,10 @@ A little info about your project and/ or overview that explains what the project
 
 Juuso Korhonen
 
-# Screenshots
-
-![Alt text](https://images.squarespace-cdn.com/content/v1/5cfbcd840dfb94000188ad57/1560216346005-4X306RNLMZGTFTQU4KP8/Intro+1.PNG.png?format=750w "Application startup screen.")
 
 # Tech/framework used
 
-What language is used, what external modules are used (if any).
+The project is entirely made using Python as programming lanuage.
 
 # Installation
 
@@ -24,6 +21,39 @@ Provide step by step series of examples and explanations about how to get a deve
 python3 src/main.py
 ```
 
-# Screencast
 
-[![Screencast](https://img.youtube.com/vi/2CTqg_e51BU/0.jpg)](https://www.youtube.com/watch?v=2CTqg_e51BU)
+# Project plan
+
+- [x] Project directory structure
+- [ ] Game (CLI Front)
+  - [ ] Module
+  - [ ] Main menu
+  - [ ] Start
+  - [ ] Ask letters
+  - [ ] Draw hangman
+  - [ ] Highscores
+  - [ ] Game info
+- [x] Read words from a file
+  - [x] Module
+  - [x] Open file
+  - [x] Read file
+  - [x] Explode to tuple
+  - [x] Select random word
+- [x] Timer
+  - [x] Module
+  - [x] Start
+  - [x] Stop
+  - [x] Read
+  - [x] Reset
+- [ ] Scorer
+  - [ ] Module
+  - [ ] Ask user name
+    - [ ] Validate name
+  - [ ] Save high score to file for each word
+    - [ ] Maximum of 3 saved high scores
+  - [ ] Read scores from files
+- [ ] Pdoc comments
+- [ ] Pdoc
+- [ ] Kill last bugs
+- [ ] Update readme
+- [ ] Screencast
