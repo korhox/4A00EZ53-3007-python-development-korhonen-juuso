@@ -8,4 +8,4 @@ class GameError(Exception):
 
 class Game:
     def __init__(self):
-        self.game_status = "new"
+        self.game_status = "main"
