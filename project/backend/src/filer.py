@@ -8,15 +8,13 @@ class FilerError(Exception):
 
 
 class Filer:
-    def __init__(self):
-        self.last_file = None
-
-    def read(self, file):
+    @staticmethod
+    def read(file):
         f = open(file, "r")
-        self.last_file = f.read()
-        return(self.last_file)
+        return(f.read())
 
-    def get_all_words(self, level="default"):
+    @staticmethod
+    def get_all_words(level="default"):
         path = Path("storage/words/"+level+".txt")
         if path.exists() != True:
             os.makedirs(os.path.dirname(path.absolute()), exist_ok=True)
@@ -25,7 +23,8 @@ class Filer:
             f.close()
         return self.read(path).split(",")
 
-    def get_word(self, level="default"):
+    @staticmethod
+    def get_word(level="default"):
         words = self.get_all_words(level)
         r = random.randint(0, len(words)-1)
         return words[r]

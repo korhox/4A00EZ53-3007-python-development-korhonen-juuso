@@ -26,7 +26,7 @@ python3 src/main.py
 
 - [x] Project directory structure
 - [ ] Game (CLI Front)
-  - [ ] Module
+  - [x] Module
   - [ ] Main menu
   - [ ] Start
   - [ ] Ask letters
