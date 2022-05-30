@@ -31,11 +31,14 @@ class Cli:
     @staticmethod
     def format_input(title: str, options: int):
         question = "\n" + blue.bold("» ") + white.bold(title) + gray(" (")
-        i = 0
-        while i < options:
-            question += gray(i+1)
-            if i != options:
-                question += gray("/")
-            i += 1
+        if options == 0 or options == 1:
+            question += gray("y/n")
+        else:
+            i = 0
+            while i < options:
+                i += 1
+                question += gray(i)
+                if i != options:
+                    question += gray("/")
         question += gray(")") + blue.bold(": ")
         return question
