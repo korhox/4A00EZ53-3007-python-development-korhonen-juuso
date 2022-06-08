@@ -16,7 +16,7 @@ class Cli:
         header = green.bold(title)
         header += "\n"
         header += green(subtitle)
-        header += "\n"
+        header += "\n\n"
         return header
 
     @staticmethod
