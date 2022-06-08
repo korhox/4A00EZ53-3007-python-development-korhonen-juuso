@@ -38,7 +38,7 @@ python3 src/main.py
   - [x] Header generator
   - [x] Question formatter
   - [x] 
-- [ ] Validator
+- [x] Validator
   - [x] Module
   - [x] Name
   - [x] Word
@@ -55,13 +55,13 @@ python3 src/main.py
   - [x] Stop
   - [x] Read
   - [x] Reset
-- [ ] Scorer
-  - [ ] Module
+- [x] Scorer
+  - [x] Module
   - [ ] Ask user name
     - [ ] Validate name
   - [ ] Save high score to file for each word
     - [ ] Maximum of 3 saved high scores
-  - [ ] Read scores from files
+  - [x] Read scores from files
 - [ ] Pdoc comments
 - [ ] Pdoc
 - [ ] Kill last bugs
