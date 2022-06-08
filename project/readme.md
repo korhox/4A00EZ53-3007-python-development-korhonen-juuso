@@ -37,7 +37,6 @@ python3 src/main.py
   - [x] Module
   - [x] Header generator
   - [x] Question formatter
-  - [x] 
 - [x] Validator
   - [x] Module
   - [x] Name
