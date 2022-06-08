@@ -25,14 +25,24 @@ python3 src/main.py
 # Project plan
 
 - [x] Project directory structure
-- [ ] Game (CLI Front)
+- [ ] Game
   - [x] Module
-  - [ ] Main menu
+  - [x] Main menu
   - [ ] Start
   - [ ] Ask letters
   - [ ] Draw hangman
   - [ ] Highscores
-  - [ ] Game info
+  - [x] Game info
+- [x] CLI Front
+  - [x] Module
+  - [x] Header generator
+  - [x] Question formatter
+  - [x] 
+- [ ] Validator
+  - [x] Module
+  - [x] Name
+  - [x] Word
+  - [x] Word Letter
 - [x] Read words from a file
   - [x] Module
   - [x] Open file
