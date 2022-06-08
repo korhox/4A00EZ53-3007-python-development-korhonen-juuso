@@ -114,7 +114,10 @@ def print_scoreboard():
 
 def print_info():
     print(Cli.create_header("HANGMAN GAME", "Info"))
-    print("The game is programmed as school project in basics of Python course. \nGitHub link: " + cyan("https://github.com/korhox/4A00EZ53-3007-python-development-korhonen-juuso/"))
+    print("The game is programmed as school project in basics of Python course. \nGitHub link: " + cyan("https://github.com/korhox/4A00EZ53-3007-python-development-korhonen-juuso/") + "\n")
+    print("Hangman art by @ ChristianAuman \nCheck their HangMan!-project on Java: " + cyan("https://replit.com/@ChristianAuman/Hangman") + "\n")
+    print("External (non-standard) Python libraries:")
+    print("simple-chalk")
 
 
 while(g.game_status != "exit"):
