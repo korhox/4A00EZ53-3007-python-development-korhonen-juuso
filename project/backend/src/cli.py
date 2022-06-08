@@ -29,16 +29,25 @@ class Cli:
         return menu
 
     @staticmethod
-    def format_input(title: str, options: int):
+    def format_input(title: str = "Press enter to return main menu", options: int = 0, subtitle: str = "↩"):
+        if title == None:
+            title
+        if subtitle == None:
+            subtitle = "Press enter to return main menu"
         question = "\n" + blue.bold("» ") + white.bold(title) + gray(" (")
-        if options == 0 or options == 1:
-            question += gray("y/n")
+        if subtitle != "↩":
+            question += gray(subtitle)
         else:
-            i = 0
-            while i < options:
-                i += 1
-                question += gray(i)
-                if i != options:
-                    question += gray("/")
+            if options == 0:
+                question += gray("↩")
+            elif options == 1:
+                question += gray("y/n")
+            else:
+                i = 0
+                while i < options:
+                    i += 1
+                    question += gray(i)
+                    if i != options:
+                        question += gray("/")
         question += gray(")") + blue.bold(": ")
         return question
