@@ -7,18 +7,21 @@ A little info about your project and/ or overview that explains what the project
 Juuso Korhonen
 
 
-# Tech/framework used
+# Credits
 
 The project is entirely made using Python as programming lanuage.
 
+Hangman art by [@ChristianAuman](https://replit.com/@ChristianAuman/Hangman)
+
+External (non-standard) Python libraries used:
+- [simple-chalk](https://pypi.org/project/simple-chalk/)
+
 # Installation
 
-Provide step by step series of examples and explanations about how to get a development env running.
-
-# How to Run the App
+Download repository, unarchive it and run the app in the unarchived directory wit the following command:
 
 ```
-python3 src/main.py
+python3 backend/src/main.py
 ```
 
 
