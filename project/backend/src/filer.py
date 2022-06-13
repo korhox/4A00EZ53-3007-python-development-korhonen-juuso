@@ -3,6 +3,8 @@ import random
 import validator
 import os
 
+default_wordlist = "umbrella,computer,programmer,apple,mac"
+
 
 def read(file):
     f = open(file, "r")
@@ -16,7 +18,7 @@ def get_all_words():
         f = open(path.absolute(), "w+")
         f.write(default_wordlist)
         f.close()
-    return Filer.read(path).split(",")
+    return read(path).split(",")
 
 
 def save_wordlist(wordlist: list = default_wordlist.split(",")):
@@ -34,29 +36,29 @@ def reset_words():
     if path.exists() != True:
         os.makedirs(os.path.dirname(path.absolute()), exist_ok=True)
     f = open(path.absolute(), "w+")
-    f.write(Filer.default_wordlist)
+    f.write(default_wordlist)
     f.close()
     return True
 
 
 def add_word(word):
     if validator.Validator.validate_word(word) == True:
-        words = Filer.get_all_words()
+        words = get_all_words()
         words.append(word)
-        Filer.save_wordlist(words)
+        save_wordlist(words)
     else:
         raise "Word did not pass the validation, please use only 2-30 a-z letters"
 
 
 def remove_word(index):
-    words = Filer.get_all_words()
+    words = get_all_words()
     words.pop(index)
-    Filer.save_wordlist(words)
+    save_wordlist(wo)
     return True
 
 
 def word_exists(word):
-    words = Filer.get_all_words()
+    words = get_all_words()
     if word in words:
         return True
     else:
@@ -64,6 +66,6 @@ def word_exists(word):
 
 
 def get_word():
-    words = Filer.get_all_words()
+    words = get_all_words()
     r = random.randint(0, len(words)-1)
     return words[r]
