@@ -8,27 +8,27 @@ from simple_chalk import *
 
 
 def print_admin():
-    while(game.game_status != "main"):
+    while(game.status != "main"):
         cli.clear()
-        if game.game_status == "admin":
+        if game.status == "admin":
             print(cli.create_header("HANGMAN GAME", "Administration"))
 
             print(cli.create_menu(["List words (or remove)", "Add words", "Reset wordlist", "Reset scores", "Exit admin menu"]))
             result = input(cli.format_input("What would you like to do?", 5))
             if (result.isnumeric()):
                 if int(result) == 1:
-                    game.game_status = "admin_word_list"
+                    game.status = "admin_word_list"
                 elif int(result) == 2:
-                    game.game_status = "admin_words_add"
+                    game.status = "admin_words_add"
                 elif int(result) == 3:
-                    game.game_status = "admin_words_reset"
+                    game.status = "admin_words_reset"
                 elif int(result) == 4:
-                    game.game_status = "admin_scores_reset"
+                    game.status = "admin_scores_reset"
                 else:
-                    game.game_status = "main"
+                    game.status = "main"
                     break
             continue
-        elif game.game_status == "admin_word_list":
+        elif game.status == "admin_word_list":
             print(cli.create_header("HANGMAN GAME", "Administration - Word list"))
 
             print(bold("#    Word"))
@@ -38,10 +38,10 @@ def print_admin():
             print("")
             result = input(cli.format_input("Enter the number you would like to remove, or press Enter to return to the main menu", 0, "number/↩"))
             if result == "":
-                game.game_status = "admin"
+                game.status = "admin"
             else:
                 if result.isnumeric():
-                    game.game_status = "admin"
+                    game.status = "admin"
                     filer.remove_word(int(result))
                     print(green("The word has been removed successfully!"))
                     input(cli.format_input("Press enter to return admin menu"))
@@ -49,14 +49,14 @@ def print_admin():
                     print(red("The input should be number or empty to return to admin menu"))
                     input(cli.format_input("Press enter to retry"))
             continue
-        elif game.game_status == "game":
+        elif game.status == "game":
             continue
-        elif game.game_status == "admin_words_add":
+        elif game.status == "admin_words_add":
             print(cli.create_header("HANGMAN GAME", "Administration - Add word"))
 
             result = input(cli.format_input("Enter word and press Enter or press Enter to return to admin menu", 0, "Word+Enter/Enter"))
             if (result == ""):
-                game.game_status = "admin"
+                game.status = "admin"
                 continue
             else:
                 if (validator.Validator.validate_word(result) != True):
@@ -67,11 +67,11 @@ def print_admin():
                     filer.add_word(result)
                     print(green("The word has been added successfully!"))
                     input(cli.format_input("Press enter to return admin menu"))
-                    game.game_status = "admin"
+                    game.status = "admin"
                     continue
-            game.game_status = "main"
+            game.status = "main"
             continue
-        elif game.game_status == "admin_words_reset":
+        elif game.status == "admin_words_reset":
             print(cli.create_header("HANGMAN GAME", "Administration - Reset word list"))
             print("Are you sure you would like to reset the word list?\n")
             print(gray("New word list will be:"))
@@ -81,15 +81,15 @@ def print_admin():
                 filer.reset_words()
                 print(green("The word list has been reseted successfully!"))
                 input(cli.format_input("Press enter to return admin menu"))
-                game.game_status = "admin"
+                game.status = "admin"
                 continue
             else:
                 print(green("The word list was not reseted."))
                 input(cli.format_input("Press enter to return admin menu"))
-                game.game_status = "admin"
+                game.status = "admin"
                 continue
         else:
-            game.game_status = "main"
+            game.status = "main"
             break
 
 
@@ -115,36 +115,62 @@ def print_info():
     print("simple-chalk")
 
 
-while(game.game_status != "exit"):
+def start_game():
+    word = filer.get_word()
+    guess = len(word) * "_"
+    guesses = round(len(word) / 2)
+    used_guesses = 0
+    while(game.status != "main"):
+        cli.clear()
+        if game.status == "new":
+            print(cli.create_header("HANGMAN GAME", "New Game"))
+            print(bold("There is a life of the developer at stake!"))
+            print("""You have to guess the word given to you without killing the developer!
+You have a certain amount of guesses and each wrong guess brings the executer
+closer to pull the lever of a trapdoor under the developer's legs.\n""")
+            print(green("Word length: ") + green.bold(len(word)))
+            print(green("Wrong guess : ") + green.bold(guesses))
+            print()
+            print("Good luck! And be careful!")
+            input(cli.format_input())
+            game.status = "ingame"
+        elif game.status == "ingame":
+            print(cli.create_header("HANGMAN GAME", "Ongoing game"))
+
+
+while(game.status != "exit"):
     cli.clear()
-    if game.game_status == "main":
+    if game.status == "main":
         print(cli.create_header("HANGMAN GAME", "Options"))
         print(cli.create_menu(["New Game", "Administrate", "View Scoreboards", "Game Info", "Exit Game"]))
         result = input(cli.format_input("What would you like to do?", 5))
         if (result.isnumeric()):
             if int(result) == 1:
-                game.game_status = "new"
+                game.status = "new"
             elif int(result) == 2:
-                game.game_status = "admin"
+                game.status = "admin"
             elif int(result) == 3:
-                game.game_status = "scoreboard"
+                game.status = "scoreboard"
             elif int(result) == 4:
-                game.game_status = "info"
+                game.status = "info"
             elif int(result) == 5:
-                game.game_status = "exit"
+                game.status = "exit"
         continue
-    elif game.game_status == "admin":
+    elif game.status == "new":
+        start_game()
+        continue
+    elif game.status == "admin":
         print_admin()
         continue
-    elif game.game_status == "scoreboard":
+    elif game.status == "scoreboard":
         print_scoreboard()
         input(cli.format_input())
-        game.game_status = "main"
+        game.status = "main"
         continue
-    elif game.game_status == "info":
+    elif game.status == "info":
         print_info()
         input(cli.format_input())
-        game.game_status = "main"
+        game.status = "main"
         continue
-    elif game.game_status == "exit":
+    elif game.status == "exit":
         exit()
