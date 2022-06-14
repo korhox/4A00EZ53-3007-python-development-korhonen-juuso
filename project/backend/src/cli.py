@@ -6,11 +6,10 @@ def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def create_header(title: str, subtitle: str):
-    header = green.bold(title)
-    header += "\n"
-    header += green(subtitle)
-    header += "\n\n"
+def create_header(title: str):
+    header = green.bold(""",-_/,.             ,-,-,-.\n' |_|/ ,-. ,-. ,-. `,| | |   ,-. ,-.\n /| |  ,-| | | | |   | ; | . ,-| | |\n `' `' `-^ ' ' `-|   '   `-' `-^ ' '\n                ,|'  """)
+    header += blue(title)
+    header += green.bold("""\n                `\n\n""")
     return header
 
 
