@@ -13,7 +13,7 @@ def add(points: int):
 
 
 def get_scores(word: str):
-    if filer.Filer.word_exists(word) != True:
+    if filer.word_exists(word) != True:
         raise ScorerError("Word does not exist")
         return False
     else:
@@ -23,7 +23,7 @@ def get_scores(word: str):
             f = open(path.absolute(), "w+")
             f.write("-:0;-:0;-:0;")
             f.close()
-        scores = filer.Filer.read(path).split(";")
+        scores = filer.read(path).split(";")
         i = 0
         while i < len(scores):
             scores[i] = scores[i].split(":")
