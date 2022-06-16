@@ -12,7 +12,11 @@ from simple_chalk import *
 
 
 class Game:
+    """The Game class contains the main functions of the game"""
+
     def __init__(self):
+        """Initializes the object default variables"""
+
         self.word = ""
         self.guess = ""
         self.guesses = 0
@@ -21,16 +25,18 @@ class Game:
         self.gameTimer = Timer()
 
     def welcome(self):
+        """Prints the game welcome screen"""
+
         cli.clear()
         printer.welcome_text()
         result = input(cli.format_input())
         self.mainMenu()
 
     def mainMenu(self):
+        """Prints the main menu and awaits the user selection"""
+
         cli.clear()
-
         printer.main_menu()
-
         result = input(cli.format_input("What would you like to do?", 5))
         if (result.isnumeric()):
             if int(result) == 1:
@@ -46,10 +52,10 @@ class Game:
         self.mainMenu()
 
     def admin(self):
+        """Prints the admin menu and awaits the user selection"""
+
         cli.clear()
-
         printer.main_admin()
-
         result = input(cli.format_input("What would you like to do?", 5))
         if (result.isnumeric()):
             if int(result) == 1:
@@ -65,6 +71,8 @@ class Game:
         self.admin()
 
     def newGame(self):
+        """Starts up the game loop after the game variables are reseted"""
+
         cli.clear()
 
         self.word = filer.get_word()
@@ -80,6 +88,8 @@ class Game:
         return
 
     def gameLoop(self):
+        """The main game loop, awaits characters one by one and prints the correct ending"""
+
         self.gameTimer.start()
         while self.wrong_guesses < self.guesses and self.guess != self.word:
             cli.clear()
@@ -109,12 +119,15 @@ class Game:
             self.win()
 
     def lose(self):
+        """Prints the "you lose" -screen"""
+
         cli.clear()
         print(cli.create_header(red.bold("You Lose")))
         print(art.get_stage(7, self))
         input(cli.format_input())
 
     def win(self):
+        """Prints the "you win" -screen and asks for highscore name, if new highscore is achieved"""
         cli.clear()
         score = round(self.gameTimer.get(), 2)
         print(cli.create_header(green.bold("You Win!")))
