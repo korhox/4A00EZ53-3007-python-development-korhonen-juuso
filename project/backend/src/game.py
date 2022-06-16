@@ -4,6 +4,10 @@ import cli
 import filer
 import printer
 import admin
+import validator
+import math
+import scorer
+from timer import Timer
 from simple_chalk import *
 
 
@@ -14,6 +18,7 @@ class Game:
         self.guesses = 0
         self.wrong_guesses = 0
         self.guessed_letters = []
+        self.gameTimer = Timer()
 
     def welcome(self):
         cli.clear()
@@ -67,6 +72,7 @@ class Game:
         self.guesses = round(len(self.word) / 2)
         self.wrong_guesses = 0
         self.guessed_letters = []
+        self.gameTimer.reset()
 
         printer.new_game_info(self)
         input(cli.format_input())
@@ -74,10 +80,11 @@ class Game:
         return
 
     def gameLoop(self):
+        self.gameTimer.start()
         while self.wrong_guesses < self.guesses and self.guess != self.word:
             cli.clear()
             print(cli.create_header("Ongoing game"))
-            print(art.get_stage(self.wrong_guesses, self))
+            print(art.get_stage(math.ceil((self.wrong_guesses / self.guesses) * 7), self))
             response = input(cli.format_input("Enter your guess", 0, "a Letter / :quit"))
             if response != ":quit":
                 if len(response) != 1:
@@ -96,3 +103,40 @@ class Game:
                 response = input(cli.format_input("Are you sure you want to quit?", 1))
                 if response == "y":
                     break
+        if self.wrong_guesses >= self.guesses:
+            self.lose()
+        if self.guess == self.word:
+            self.win()
+
+    def lose(self):
+        cli.clear()
+        print(cli.create_header(red.bold("You Lose")))
+        print(art.get_stage(7, self))
+        input(cli.format_input())
+
+    def win(self):
+        cli.clear()
+        score = round(self.gameTimer.get(), 2)
+        print(cli.create_header(green.bold("You Win!")))
+        print(art.get_win())
+        print()
+        print("Score / time: " + str(score) + " seconds")
+        scores = scorer.get_scores(self.word)
+        if len(scores) >= 3 and float(scores[-1][1]) < score:
+            input(cli.format_input())
+            return
+        name = None
+        while(name == None):
+            temp_name = input(cli.format_input("Enter your name for highscore or press Enter to skip", 0, "Name / Enter"))
+            if temp_name == "":
+                sure = input(cli.format_input("Are you sure you don't want to save your highscore?", 1))
+                if sure == "y":
+                    return
+                else:
+                    continue
+            if validator.validate_name(temp_name) != True:
+                print(red("The name should contain only alphabet and numbers. Please try again."))
+                continue
+            name = temp_name
+        scorer.save(name, self.word, score)
+        input(cli.format_input())
