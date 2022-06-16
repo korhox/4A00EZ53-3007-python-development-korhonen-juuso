@@ -1,6 +1,7 @@
 import filer
 import cli
 import validator
+import scorer
 from simple_chalk import *
 
 
@@ -33,7 +34,7 @@ def words_add():
     if (result == ""):
         return
     else:
-        if (validator.Validator.validate_word(result) != True):
+        if (validator.validate_word(result) != True):
             print(red("The word must be 2-30 characters long and should contain only a-z letters."))
             input(cli.format_input("Press enter to retry"))
             return
@@ -58,5 +59,21 @@ def words_reset():
         return
     else:
         print(green("The word list was not reseted."))
+        input(cli.format_input("Press enter to return admin menu"))
+        return
+
+
+def scores_reset():
+    cli.clear()
+    print(cli.create_header(red("Administration - Reset highscores")))
+    print("Are you sure you would like to reset the highscores?\n")
+    result = input(cli.format_input("Would you still like to reset the highscores?", 1))
+    if result == "y":
+        scorer.reset()
+        print(green("The highscores have been reseted successfully!"))
+        input(cli.format_input("Press enter to return admin menu"))
+        return
+    else:
+        print(green("The highscores were not reseted."))
         input(cli.format_input("Press enter to return admin menu"))
         return
