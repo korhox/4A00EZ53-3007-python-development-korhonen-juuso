@@ -28,13 +28,13 @@ python3 backend/src/main.py
 # Project plan
 
 - [x] Project directory structure
-- [ ] Game
+- [x] Game
   - [x] Module
   - [x] Main menu
-  - [ ] Start
-  - [ ] Ask letters
-  - [ ] Draw hangman
-  - [ ] Highscores
+  - [x] Start
+  - [x] Ask letters
+  - [x] Draw hangman
+  - [x] Highscores
   - [x] Game info
 - [x] CLI Front
   - [x] Module
@@ -59,11 +59,12 @@ python3 backend/src/main.py
   - [x] Reset
 - [x] Scorer
   - [x] Module
-  - [ ] Ask user name
-    - [ ] Validate name
-  - [ ] Save high score to file for each word
-    - [ ] Maximum of 3 saved high scores
+  - [x] Ask user name
+    - [x] Validate name
+  - [x] Save high score to file for each word
+    - [x] Maximum of 3 saved high scores
   - [x] Read scores from files
+- [ ] Prerelease
 - [ ] Pdoc comments
 - [ ] Pdoc
 - [ ] Kill last bugs
