@@ -3,8 +3,11 @@ import cli
 import scorer
 from simple_chalk import *
 
+"""Printer module contains different print statements for printing mostly static text"""
+
 
 def scoreboard():
+    """Prints the scoreboard"""
     cli.clear()
     print(cli.create_header("Scoreboard"))
 
@@ -28,6 +31,11 @@ def scoreboard():
 
 
 def print_score(word: str):
+    """Prints score page for a certain word
+
+    Args:
+        word (str): The word, for which the scores will be printed for
+    """
     cli.clear()
     scores = scorer.get_scores(word)
     print(cli.create_header("Scoreboard for word: " + word))
@@ -41,6 +49,7 @@ def print_score(word: str):
 
 
 def info():
+    """Prints the main info screen"""
     print(cli.create_header("Info"))
     print("The game is programmed as school project in basics of Python course. \nGitHub link: " + cyan("https://github.com/korhox/4A00EZ53-3007-python-development-korhonen-juuso/") + "\n")
     print("Hangman art by @ ChristianAuman \nCheck their HangMan!-project on Java: " + cyan("https://replit.com/@ChristianAuman/Hangman") + "\n")
@@ -49,18 +58,24 @@ def info():
 
 
 def new_game_info(game):
+    """Prints the new game info
+
+    Args:
+        game (Game() object): the game object"""
     print(cli.create_header("New Game"))
     print(bold("There is a life of the developer at stake!"))
     print("""You have to guess the word given to you without killing the developer!
 You have a certain amount of guesses and each wrong guess brings the executer
 closer to pull the lever of a trapdoor under the developer's legs.\n""")
     print(green("Word length: ") + green.bold(len(game.word)))
-    print(green("Wrong guess : ") + green.bold(game.guesses))
+    print(green("Wrong guess limit: ") + green.bold(game.guesses))
     print()
     print("Good luck! And be careful!")
 
 
 def welcome_text():
+    """Prints welcome text and the adjust screen
+    """
     print(cli.create_header("Welcome!"))
     print("Please adjust the screen / window to fit the following box + text above and below:")
     print("┏" + "━━" * 48 + "┓")
@@ -70,10 +85,14 @@ def welcome_text():
 
 
 def main_menu():
+    """Print main menu oprions
+    """
     print(cli.create_header("Options"))
     print(cli.create_menu(["New Game", "Administrate", "View Scoreboards", "Game Info", "Exit Game"]))
 
 
 def main_admin():
+    """Print admin menu options
+    """
     print(cli.create_header(red("Administration")))
     print(cli.create_menu(["List words (or remove)", "Add words", "Reset wordlist", "Reset scores", "Exit admin menu"]))
