@@ -217,6 +217,10 @@ win = """ooooo  oooo ooooooo  ooooo  oooo
 
 
 def get_stage(stage: int, game):
+    """Returns stage art and game GUI
+
+    Returns:
+        string: stage art and game GUI"""
 
     if stage < 0 or stage > 7:
         raise Exception("Stage must be between 0 and 7")
@@ -235,4 +239,9 @@ def get_stage(stage: int, game):
 
 
 def get_win():
+    """Returns win art
+
+    Returns:
+        string: win art
+    """
     return green(win)
