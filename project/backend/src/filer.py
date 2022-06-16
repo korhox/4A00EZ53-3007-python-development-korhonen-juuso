@@ -3,12 +3,15 @@ import random
 import validator
 import os
 
-default_wordlist = "umbrella,computer,programmer,apple,mac"
+default_wordlist = "umbrella,computer,programmer,apple,mac,doorbell,paper,usb,speaker,mouse,printer,lamp,camera,webcam,remote,microphone,desk,stool,clock,bill,magnet,microsoft,facebook,discord,slack,game,steam,ubisoft,window,file,directory,desktop,trackpad,headpohones,keyboard"
 
 
 def read(file):
-    f = open(file, "r")
-    return(f.read())
+    try:
+        f = open(file, "r")
+        return(f.read())
+    except:
+        return("")
 
 
 def get_all_words():
@@ -42,7 +45,7 @@ def reset_words():
 
 
 def add_word(word):
-    if validator.Validator.validate_word(word) == True:
+    if validator.validate_word(word) == True:
         words = get_all_words()
         words.append(word)
         save_wordlist(words)
@@ -53,16 +56,13 @@ def add_word(word):
 def remove_word(index):
     words = get_all_words()
     words.pop(index)
-    save_wordlist(wo)
+    save_wordlist(words)
     return True
 
 
 def word_exists(word):
     words = get_all_words()
-    if word in words:
-        return True
-    else:
-        return False
+    return word in words
 
 
 def get_word():
