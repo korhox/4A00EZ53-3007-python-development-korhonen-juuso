@@ -6,6 +6,7 @@ from simple_chalk import *
 
 
 def wordlist():
+    """Prints indexed word list"""
     cli.clear()
     print(cli.create_header(red("Administration - Word list")))
 
@@ -27,6 +28,7 @@ def wordlist():
 
 
 def words_add():
+    """Asks and adds the word user gives"""
     cli.clear()
     print(cli.create_header(red("Administration - Add word")))
 
@@ -46,6 +48,7 @@ def words_add():
 
 
 def words_reset():
+    """Resets word list to default word list"""
     cli.clear()
     print(cli.create_header(red("Administration - Reset word list")))
     print("Are you sure you would like to reset the word list?\n")
@@ -64,6 +67,7 @@ def words_reset():
 
 
 def scores_reset():
+    """Resets score list"""
     cli.clear()
     print(cli.create_header(red("Administration - Reset highscores")))
     print("Are you sure you would like to reset the highscores?\n")
