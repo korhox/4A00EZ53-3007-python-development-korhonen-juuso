@@ -4,12 +4,14 @@
 This hangman game is compeletely programmed in Python, relying only one external extension, simple-chalk.
 
 
-# Running the release
-* On **Windows**, download `hangman.exe` from releases/tags and run it.
-* On **Mac** & **Linux** download from releases/tags file named `hangman` and run it in terminal with command:
+# Running the latest release
+* On **Windows**, download `hangman.exe` from releases/tags and run it as you would run any executable file.
+* On **Mac** & **Linux** download from releases/tags file named `hangman` and run it. If it won't open, use this command in terminal:
 ```
 chmod +x ./hangman && ./hangman
 ```
+
+**NOTE:** After launching the game, please resize the window to show the full view of game logo and contents to ensure best gaming experience.
 
 # Running from source code
 
@@ -21,11 +23,12 @@ python3 src/main.py
 
 # Building
 
-To create build manually, you can simply download the repository and run:
+To create build manually, you need [Pyinstaller](https://pyinstaller.org/en/stable/). After you have installed the Pyinstaller (using Pip3: `pip3 install pyinstaller`), you can simply download the repository and run:
 ```
 pyinstaller src/main.py --onefile
 ```
 
+Run the command in the environment you want to create onefiler for. For example, on Windows for windows .exe and on mac/linux for binary files.
 
 # Author
 
