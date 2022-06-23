@@ -11,8 +11,14 @@ This hangman game is compeletely programmed in Python, relying only one external
 
 # Running from the source code
 
-Download repository, unarchive it and run the app in the unarchived directory wit the following command:
+Download and unarchive the source code from a release or from the repository if you want to run the development version.
 
+Before you can run the app, you'll need to install requirements with:
+```
+pip install -r requirements.txt
+```
+
+After the requirements are installed you can run the game:
 ```
 python3 src/main.py
 ```
