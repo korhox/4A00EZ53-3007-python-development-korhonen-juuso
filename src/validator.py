@@ -39,4 +39,4 @@ def validate_word_letter(letter: str):
         bool: Whether validation succeeded or not
     """
     regex = "[a-z]{1}"  # allows only english alphabet
-    return bool(e.fullmatch(regex, letter))
+    return bool(re.fullmatch(regex, letter))
