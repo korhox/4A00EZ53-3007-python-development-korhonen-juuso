@@ -50,11 +50,13 @@ def print_score(word: str):
 
 def info():
     """Prints the main info screen"""
+    cli.clear()
     print(cli.create_header("Info"))
     print("The game is programmed as school project in basics of Python course. \nGitHub link: " + cyan("https://github.com/korhox/4A00EZ53-3007-python-development-korhonen-juuso/") + "\n")
     print("Hangman art by @ ChristianAuman \nCheck their HangMan!-project on Java: " + cyan("https://replit.com/@ChristianAuman/Hangman") + "\n")
     print("External (non-standard) Python libraries:")
     print("simple-chalk")
+    input(cli.format_input())
 
 
 def new_game_info(game):
