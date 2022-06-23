@@ -78,7 +78,7 @@ class Game:
 
         self.word = filer.get_word()
         self.guess = "_" * len(self.word)
-        self.guesses = round(len(self.word) / 2)
+        self.guesses = 7
         self.wrong_guesses = 0
         self.guessed_letters = []
         self.gameTimer.reset()
@@ -95,7 +95,7 @@ class Game:
         while self.wrong_guesses < self.guesses and self.guess != self.word:
             cli.clear()
             print(cli.create_header("Ongoing game"))
-            print(art.get_stage(math.ceil((self.wrong_guesses / self.guesses) * 7), self))
+            print(art.get_stage(self.wrong_guesses, self))
             response = input(cli.format_input("Enter your guess", 0, "a Letter / :quit"))
             if response != ":quit":
                 if validator.validate_word_letter(response) != True:
