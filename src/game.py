@@ -48,6 +48,7 @@ class Game:
             elif int(result) == 4:
                 printer.info()
             elif int(result) == 5:
+                exit()
                 return
         self.mainMenu()
 
