@@ -97,7 +97,7 @@ class Game:
             print(art.get_stage(math.ceil((self.wrong_guesses / self.guesses) * 7), self))
             response = input(cli.format_input("Enter your guess", 0, "a Letter / :quit"))
             if response != ":quit":
-                if len(response) != 1:
+                if validator.validate_word_letter(response) != True:
                     continue
                 if response in self.word:
                     for i, v in enumerate(self.word):
