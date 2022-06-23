@@ -229,7 +229,10 @@ def get_stage(stage: int, game):
     stageart = stages[:][stage].split("\n")
 
     stageart[1] += ((34 - len(stageart[1])) * " ") + bold("Guess the word:")
-    stageart[2] += ((34 - len(stageart[2])) * " ") + blue("".join([f"{i} " for i in game.guess]))
+    if stage == 7:
+        stageart[2] += ((34 - len(stageart[2])) * " ") + red.bold("".join([f"{i} " for i in game.word]))
+    else:
+        stageart[2] += ((34 - len(stageart[2])) * " ") + blue("".join([f"{i} " for i in game.guess]))
 
     stageart[4] += ((34 - len(stageart[4])) * " ") + gray("Word length: ") + str(len(game.guess))
     stageart[5] += ((34 - len(stageart[5])) * " ") + gray("Wrong guesses: ") + str(game.wrong_guesses) + gray("/") + str(game.guesses)
