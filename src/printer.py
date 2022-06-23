@@ -16,7 +16,7 @@ def scoreboard():
     for i, x in enumerate(words):
         highscore = (scorer.get_scores(x) or [["-", "-"]])[0]
         line = str(i+1) + "."
-        line += " " * (4 - len(str(i)))
+        line += " " * (4 - len(str(i+1)))
         line += x.capitalize()
         line += " " * (22 - len(x))
         line += highscore[1]
